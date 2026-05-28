@@ -1,0 +1,94 @@
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev-Detective GitHub Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-panel" aria-labelledby="app-title">
+      <div class="title-group">
+        <p class="eyebrow">GitHub REST API project</p>
+        <h1 id="app-title">Dev-Detective</h1>
+        <p class="intro">Search a GitHub profile, inspect latest repositories, or compare two developers by total repository stars.</p>
+      </div>
+
+      <div class="mode-switch" role="group" aria-label="Search mode">
+        <button class="mode-btn active" type="button" data-mode="single">Single Search</button>
+        <button class="mode-btn" type="button" data-mode="battle">Battle Mode</button>
+      </div>
+    </section>
+
+    <section class="search-panel" aria-label="GitHub username search">
+      <form class="search-form" id="single-form">
+        <label class="sr-only" for="username">GitHub username</label>
+        <input id="username" name="username" type="search" placeholder="Search username, e.g. octocat" autocomplete="off" required>
+        <button type="submit">Search</button>
+      </form>
+
+      <form class="search-form battle-form hidden" id="battle-form">
+        <label class="sr-only" for="username-one">First GitHub username</label>
+        <input id="username-one" name="usernameOne" type="search" placeholder="First username" autocomplete="off">
+
+        <label class="sr-only" for="username-two">Second GitHub username</label>
+        <input id="username-two" name="usernameTwo" type="search" placeholder="Second username" autocomplete="off">
+
+        <button type="submit">Compare</button>
+      </form>
+    </section>
+
+    <section class="state-region" id="state-region" aria-live="polite"></section>
+
+    <section class="battle-summary hidden" id="battle-summary" aria-live="polite"></section>
+
+    <section class="results-grid" id="results"></section>
+  </main>
+
+  <template id="profile-template">
+    <article class="profile-card">
+      <div class="profile-top">
+        <img class="avatar" alt="">
+        <div>
+          <p class="status-pill"></p>
+          <h2 class="profile-name"></h2>
+          <a class="profile-login" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </div>
+
+      <p class="bio"></p>
+
+      <dl class="profile-meta">
+        <div>
+          <dt>Joined</dt>
+          <dd class="joined-date"></dd>
+        </div>
+
+        <div>
+          <dt>Portfolio</dt>
+          <dd><a class="portfolio-link" target="_blank" rel="noopener noreferrer"></a></dd>
+        </div>
+
+        <div>
+          <dt>Total Stars</dt>
+          <dd class="stars-count"></dd>
+        </div>
+      </dl>
+
+      <div class="repos-block">
+        <div class="section-heading">
+          <h3>Latest repositories</h3>
+          <span class="repo-count"></span>
+        </div>
+
+        <ul class="repo-list"></ul>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
